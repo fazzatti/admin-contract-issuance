@@ -19,7 +19,7 @@ impl ExchangeAllowanceContract {
         write_asset(&_env, asset);
     }
 
-    pub fn mint(env: Env, to: Address, amount: i128, minter: Address) {
+    pub fn swap_mint(env: Env, to: Address, amount: i128, minter: Address) {
         minter.require_auth();
 
         let allowance_asset = read_allowance(&env);
@@ -31,20 +31,6 @@ impl ExchangeAllowanceContract {
         let asset_client = soroban_sdk::token::StellarAssetClient::new(&env, &asset);
 
         asset_client.mint(&to, &amount);
-    }
-
-    pub fn burn(env: Env, minter: Address, amount: i128) {
-        minter.require_auth();
-
-        let asset = read_asset(&env);
-        let asset_client = soroban_sdk::token::StellarAssetClient::new(&env, &asset);
-
-        asset_client.burn(&minter, &amount);
-
-        let allowance_asset = read_allowance(&env);
-        let allowance_client = soroban_sdk::token::StellarAssetClient::new(&env, &allowance_asset);
-
-        allowance_client.transfer(&env.current_contract_address(), &minter, &amount);
     }
 }
 

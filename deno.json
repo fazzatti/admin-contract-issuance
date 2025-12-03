@@ -2,8 +2,7 @@
   "tasks": {
     "build-contracts": "stellar contract build",
     "setup": "deno run --allow-env --allow-net --allow-read --allow-write --allow-ffi scripts/setup-exchange.ts",
-    "mint": "deno run --allow-env --allow-net --allow-read --allow-write --allow-ffi scripts/mint.ts",
-    "burn": "deno run --allow-env --allow-net --allow-read --allow-write --allow-ffi scripts/burn.ts"
+    "mint": "deno run --allow-env --allow-net --allow-read --allow-write --allow-ffi scripts/mint.ts"
   },
   "compilerOptions": {
     "lib": ["deno.ns", "deno.window", "deno.worker"],

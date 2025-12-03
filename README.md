@@ -4,12 +4,11 @@ Demonstrates using a Soroban smart contract as an admin for a Stellar asset, man
 
 ## Overview
 
-The [`ExchangeAllowanceContract`](contracts/exchange-allowance/src/lib.rs) acts as the admin for a Stellar asset (FIFO). Users must hold allowance tokens (FIFOAllow) to mint the main asset, and receive them back when burning.
+The [`ExchangeAllowanceContract`](contracts/exchange-allowance/src/lib.rs) acts as the admin for a Stellar asset (FIFO). Users must hold allowance tokens (FIFOAllow) to mint the main asset.
 
 **Flow:**
 
-- **Mint**: Transfer allowance tokens → Receive minted asset tokens
-- **Burn**: Burn asset tokens → Receive allowance tokens back
+- **Swap Mint**: Transfer allowance tokens → Receive minted asset tokens
 
 ## Project Structure
 
@@ -32,16 +31,10 @@ Deploys contracts and configures the exchange:
 deno task setup
 ```
 
-### Mint Tokens
+### Swap Mint Tokens
 
 ```sh
 deno task mint <amount>
-```
-
-### Burn Tokens
-
-```sh
-deno task burn <amount>
 ```
 
 ## Requirements

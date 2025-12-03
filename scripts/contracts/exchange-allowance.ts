@@ -15,7 +15,7 @@ export class ExchangeAllowance extends Contract {
       contractConfig: { wasm, contractId } as any,
     });
   }
-  async mint({
+  async swapMint({
     minter,
     amount,
     config,
@@ -25,28 +25,12 @@ export class ExchangeAllowance extends Contract {
     config: TransactionConfig;
   }) {
     return await this.invoke({
-      method: Methods.Mint,
+      method: Methods.SwapMint,
       methodArgs: {
         minter: minter,
         to: minter,
         amount,
-      } as Payload[Methods.Mint],
-      config,
-    });
-  }
-
-  async burn({
-    minter,
-    amount,
-    config,
-  }: {
-    minter: Ed25519PublicKey;
-    amount: bigint;
-    config: TransactionConfig;
-  }) {
-    return await this.invoke({
-      method: Methods.Burn,
-      methodArgs: { minter, amount } as Payload[Methods.Burn],
+      } as Payload[Methods.SwapMint],
       config,
     });
   }

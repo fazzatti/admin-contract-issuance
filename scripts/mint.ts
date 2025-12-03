@@ -26,7 +26,7 @@ await exchangeContract.loadSpecFromWasm();
 
 console.log(`Minting ${amount} tokens to minter ${minter.publicKey()}`);
 
-const result = await exchangeContract.mint({
+const result = await exchangeContract.swapMint({
   minter: minter.publicKey(),
   amount,
   config: {
